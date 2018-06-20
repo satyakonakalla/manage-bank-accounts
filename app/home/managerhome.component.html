@@ -1,0 +1,106 @@
+﻿<div style="height:200px; width: 80%;margin: 30px">
+    <mat-card>
+        <h3>Welcome
+            <span style="text-transform: uppercase"> Accounts Manager</span>
+        </h3>
+        <h4>All Customer account details:</h4>
+        <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+                <mat-table #table [dataSource]="dataSource" matSort>
+
+                    <ng-container matColumnDef="customerIdentifier">
+                        <mat-header-cell *matHeaderCellDef> Customer Identifier </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.customerIdentifier}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="accountNumber">
+                        <mat-header-cell *matHeaderCellDef> Account Number </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.accountNumber}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="firstName">
+                        <mat-header-cell *matHeaderCellDef> FirstName </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="lastName">
+                        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mobileNumber">
+                        <mat-header-cell *matHeaderCellDef> Mobile Number </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.mobileNumber}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fee">
+                        <mat-header-cell *matHeaderCellDef> Monthly Fee Dues </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fee}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="creationDate">
+                        <mat-header-cell *matHeaderCellDef> Creation Date </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.creationDate}} </mat-cell>
+                    </ng-container>                   
+
+                    <ng-container matColumnDef="editAccount">
+                        <mat-header-cell *matHeaderCellDef> Edit Account </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <span *ngIf="!element.isManagerAccount">
+                            <button mat-raised-button (click)="loadAccount(element.customerIdentifier)" color="primary">Edit Account</button>
+                        </span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+                <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+                </mat-paginator>
+            </div>
+            <br/>
+            <div>
+                <span>{{editAccountErrorMessage}}</span>
+            </div>
+            <div *ngIf="showEditSection">
+                <mat-card>
+                    <h3>Edit Account:</h3>
+                    <mat-card-content>
+
+                        <form>
+                            <br/>
+                            <mat-form-field>
+                                <input matInput placeholder="First Name" [(ngModel)]="editedAccount.firstName" name="firstName">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Last Name" [(ngModel)]="editedAccount.lastName" name="lastName">
+                            </mat-form-field>
+                            <br/>
+                            <mat-form-field>
+                                <input matInput placeholder="Mobile Number" [(ngModel)]="editedAccount.mobileNumber" name="mobileNumber">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput type="email" placeholder="Email" [(ngModel)]="editedAccount.email" name="email">
+                            </mat-form-field>
+                            <br/>
+                            <mat-form-field>
+                                <input matInput placeholder="Fee's" [(ngModel)]="editedAccount.fee" name="fee">
+                            </mat-form-field>
+                            <br/>
+                            <br/>
+                            <button mat-raised-button color="primary" (click)="updateAccount()">Update Account </button>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button [routerLink]="['/login']" color="primary">Logout</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -1,0 +1,21 @@
+﻿
+    <div style="height:200px; width: 600px;margin: 30px" >
+        <mat-card>
+            <h3>Login</h3>
+            <span style="color: red;">{{loginErrMsg}}</span><br/>
+            <mat-card-content>
+                <form>
+                    <mat-form-field>
+                        <input matInput placeholder="Customer Identifier" name="cid" [(ngModel)]="cid">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password">
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="authenticate()">Login </button>
+                <button mat-raised-button [routerLink]="['/createnewaccount']" color="primary">Create New Account</button>
+            </mat-card-actions>
+        </mat-card>                
+    </div>

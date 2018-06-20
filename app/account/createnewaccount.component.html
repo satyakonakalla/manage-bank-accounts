@@ -1,0 +1,39 @@
+﻿<div style="height:200px; width: 600px;margin: 30px">
+
+    <div *ngIf="isAccountCratinSuccess;then accountsuccess else createaccount"></div>
+
+    <ng-template #createaccount>
+        <mat-card>
+            <h3>Create New Account</h3>
+            <form><br/>
+                <mat-form-field>
+                    <input matInput placeholder="First Name" [(ngModel)]="account.firstName" name="firstName">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Last Name" [(ngModel)]="account.lastName" name="lastName">
+                </mat-form-field><br/>
+                <mat-form-field>
+                    <input matInput placeholder="Mobile Number" [(ngModel)]="account.mobileNumber" name="mobileNumber">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="email" placeholder="Email" [(ngModel)]="account.email" name="email">
+                </mat-form-field><br/>
+                <mat-form-field>
+                    <input matInput placeholder="Password" [(ngModel)]="account.password" name="password">
+                </mat-form-field><br/>
+                <mat-checkbox [(ngModel)]="isChecked" name="terms">Please accept that a monthly fee of $10 will be charged on your account.</mat-checkbox>
+                <br/><br/>
+                <button mat-raised-button color="primary" (click)="createAccount()">Create Account </button>
+                <button mat-raised-button color="primary" [routerLink]="['/login']">Back </button>
+            </form>
+        </mat-card>
+    </ng-template>
+    <ng-template #accountsuccess>
+        <mat-card>
+            <h4>Your Account created successfully. Please use below details to login</h4><br/>
+            <b>Customer Identifier</b>: {{account.customerIdentifier}}<br/>
+            <b>Password</b>: {{account.password}}<br/><br/>
+            <button mat-raised-button color="primary" [routerLink]="['/login']">Login</button>
+        </mat-card>
+    </ng-template>
+</div>

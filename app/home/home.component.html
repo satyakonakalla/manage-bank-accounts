@@ -1,0 +1,29 @@
+﻿<div style="height:200px; width: 600px;margin: 30px">
+    <mat-card>
+        <h3>Welcome
+            <span style="text-transform: uppercase"> {{currentAccount.firstName}} {{currentAccount.lastName}}</span>
+        </h3>
+        <h4>Your Accont Details:</h4>
+        <mat-card-content>
+            <mat-list>
+                <mat-divider></mat-divider>
+                <mat-list-item><b>Identifier:</b> {{currentAccount.customerIdentifier}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><b>Accont Number:</b> {{currentAccount.accountNumber}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><b>Mobile Number:</b> {{currentAccount.mobileNumber}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><b>Account Creation Date:</b> {{currentAccount.creationDate}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><b>Fees Dues:</b> {{currentAccount.monthlyFee}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><b>Email:</b> {{currentAccount.email}}</mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button [routerLink]="['/login']" color="primary">Logout</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
