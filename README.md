@@ -1,2 +1,2 @@
 # manage-bank-accounts
-Angular 5 client to manager bank accounts using browser storage
+Angular 5 client to manage bank accounts using browser local storage
